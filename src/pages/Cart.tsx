@@ -77,7 +77,12 @@ const Cart = () => {
               />
               
               <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
+                <Link 
+                  to={`/product/${item.id}`}
+                  className="font-semibold text-lg mb-1 hover:text-primary transition-colors block"
+                >
+                  {item.name}
+                </Link>
                 <p className="text-sm text-muted-foreground mb-2">
                   Rs. {item.price.toLocaleString()} each
                 </p>
@@ -129,12 +134,20 @@ const Cart = () => {
             </span>
           </div>
           
-          <Button onClick={handleBuyNow} size="lg" className="w-full">
-            Buy Now via WhatsApp
-          </Button>
+          <div className="space-y-3">
+            <Button asChild size="lg" className="w-full">
+              <Link to="/checkout">
+                Proceed to Checkout
+              </Link>
+            </Button>
+            
+            <Button onClick={handleBuyNow} variant="outline" size="lg" className="w-full">
+              Buy Now via WhatsApp
+            </Button>
+          </div>
           
           <p className="text-sm text-muted-foreground text-center mt-4">
-            Click to send your order details via WhatsApp
+            Choose checkout for detailed order form or WhatsApp for quick order
           </p>
         </div>
       </div>
